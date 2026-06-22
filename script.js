@@ -63,12 +63,12 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="instruction-step">
               <span class="step-badge">3</span>
-              <p>Click the blue <strong>"↓ Free download"</strong> button embedded inside the video player on X.com!</p>
+              <p>If you have the extension installed, the download starts <strong>automatically</strong> and the tab will close!</p>
             </div>
           </div>
           
           <div class="modal-actions">
-            <a href="${url}" target="_blank" class="btn btn-primary btn-modal-go">Open Tweet & Download</a>
+            <a href="${url}#autodownload" target="_blank" class="btn btn-primary btn-modal-go">Open Tweet & Download</a>
             <button class="btn btn-secondary btn-modal-cancel">Close</button>
           </div>
         </div>
