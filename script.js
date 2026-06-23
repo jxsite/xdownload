@@ -24,13 +24,29 @@ document.addEventListener("DOMContentLoaded", () => {
     form.classList.add("loading");
     button.disabled = true;
 
-    // Simulate analysis & guide the user
+    const hasExtension = document.documentElement.dataset.xDownloadExtensionInstalled === "true";
+
     setTimeout(() => {
       form.classList.remove("loading");
       button.disabled = false;
 
-      // Create a nice informational overlay modal
-      showRedirectModal(urlValue, tweetId);
+      if (hasExtension) {
+        // Open the download tab directly in a new window - zero click download!
+        window.open(`${urlValue}#autodownload`, "_blank");
+        
+        // Show a temporary success state on the button
+        const btnText = button.querySelector(".btn-text");
+        const originalText = btnText ? btnText.textContent : "Download Video";
+        if (btnText) btnText.textContent = "Opening Download Tab...";
+        
+        setTimeout(() => {
+          if (btnText) btnText.textContent = originalText;
+          input.value = ""; // Clear input
+        }, 3000);
+      } else {
+        // If extension is not installed, show the informational guide modal
+        showRedirectModal(urlValue, tweetId);
+      }
     }, 800);
   });
 
